@@ -1,1 +1,2 @@
 # popstation-userguide-docs
+このリポジトリはNotion上のマスターデータを自動変換して同期しています。直接このMarkdownを編集せず、Notion側を修正してください。
