@@ -47,6 +47,22 @@ def get_toggle_content(toggle_block_id):
     # 抽出したテキストを改行で結合して返す
     return "\n".join(extracted_texts)
 
+def get_icon(block):
+    """calloutブロックからアイコン（絵文字）を取得する
+    Args:
+        block (object dict): Notion APIから取得したcalloutブロックオブジェクト
+    Returns:
+        str: アイコンの絵文字、存在しない場合はデフォルトの絵文字
+    """    
+    callout = block.get("callout", {})
+    icon_ptr = callout.get("icon")
+    
+    # icon_ptr が辞書であることを確認してから中身を見る
+    if isinstance(icon_ptr, dict) and icon_ptr.get("type") == "emoji":
+        return icon_ptr.get("emoji", "💡")
+    
+    return "💡" # デフォルト
+
 def image_block_to_markdown(block, alt_text=""):
     """画像ブロックをMarkdown形式に変換し、画像を保存する
 
@@ -112,8 +128,11 @@ def handle_callout(block, **kwargs):
     Returns:
         str: 見出し1のMarkdown形式のテキスト
     """
-    text = extract_text(block["callout"]["rich_text"])
-    icon = block["callout"].get("icon", {}).get("emoji", "💡")
+    callout = block.get("callout", {})
+    text = extract_text(callout.get("rich_text", []))
+
+    # 安全にアイコンを取得
+    icon = get_icon(block)
 
     return f"> {icon} {text}\n"
 
@@ -129,7 +148,7 @@ def handle_h1_block(block, **kwargs):
         str: 見出し1のMarkdown形式のテキスト
     """
     text = extract_text(block['heading_1']['rich_text'])
-    return f"## {text}\n\n"
+    return f"\n## {text}\n\n"
 
 def handle_h2_block(block, **kwargs):
     """見出し2ブロックをMarkdown形式に変換する
@@ -141,7 +160,7 @@ def handle_h2_block(block, **kwargs):
         str: 見出し2のMarkdown形式のテキスト
     """
     text = extract_text(block['heading_2']['rich_text'])
-    return f"### {text}\n\n"
+    return f"\n### {text}\n\n"
 
 def handle_h3_block(block, **kwargs):
     """見出し3ブロックをMarkdown形式に変換する
@@ -152,7 +171,7 @@ def handle_h3_block(block, **kwargs):
         str: 見出し3のMarkdown形式のテキスト
     """
     text = extract_text(block['heading_3']['rich_text'])
-    return f"#### {text}\n\n"
+    return f"\n#### {text}\n\n"
 
 def handle_paragraph_block(block, **kwargs):
     """段落ブロックをMarkdown形式に変換する
@@ -164,7 +183,12 @@ def handle_paragraph_block(block, **kwargs):
         str: 段落のMarkdown形式のテキスト
     """
     text = extract_text(block['paragraph']['rich_text'])
-    return f"{text}\n\n"
+    # 【スキップ判定】特定のキーワードが含まれていたら無視する
+    skip_keywords = ["トップページに戻る", "トップページへ戻る", "TOPへ戻る", "目次へ戻る"]
+    if any(keyword in text for keyword in skip_keywords):
+        return ""
+    else:
+        return f"{text}\n\n"
 
 def handle_bulleted_list_item_block(block, **kwargs):
     """箇条書きブロックをMarkdown形式に変換する
@@ -198,12 +222,13 @@ def handle_numbered_list_item_block(block, **kwargs):
 handlers = {
     "heading_1": handle_h1_block,
     "heading_2": handle_h2_block,
+    "heading_3": handle_h3_block,
     "paragraph": handle_paragraph_block,
     "bulleted_list_item": handle_bulleted_list_item_block,
     "numbered_list_item": handle_numbered_list_item_block,
-
+    "callout": handle_callout,
     #"image": handle_image_block,  # 画像は別関数で処理
-    # 新しいブロックが増えたらここに1行足すだけ
+    # 新しいブロックが増えたらここに足す
 }
 
 def block_to_markdown(block):
@@ -253,7 +278,7 @@ def handle_single_block(block, depth=0):
     Raises:
         
     """
-    md = block_to_markdown(block)
+    #md = block_to_markdown(block)
     # ネストレベルに応じてインデントを追加
     b_type = block['type']
     indent = "  " * depth
@@ -276,10 +301,11 @@ def handle_single_block(block, depth=0):
             print(f"❌  Unsupported block type '{b_type}': Skipped.")
             md_content = ""
 
-    # 各行の先頭に現在の深さのインデントを付与
-    content = "".join([f"{indent}{line}\n" for line in md_content.splitlines()])
-
-    return content
+    if not md_content:
+        return ""
+    else:
+        # 各行の先頭に現在の深さのインデントを付与
+        return "".join([f"{indent}{line}\n" for line in md_content.splitlines()])
 
 
 def fetch_all_blocks(block_id):
@@ -344,8 +370,6 @@ def convert_blocks_to_markdown(block_list, depth=0):
                 md += convert_blocks_to_markdown(child_blocks, depth + 1)            
     return md
 
-
-
 def convert_page_to_md(page_id, output_filename):
     """指定のnotionページをMarkdownに変換し、保存する
 
@@ -358,39 +382,13 @@ def convert_page_to_md(page_id, output_filename):
     """
     print(f"Connections notion page: {page_id}")
     blocks = fetch_all_blocks(page_id)
-    md_lines = ""
-    # 処理済みのインデックスを記録するセット（画像下のImage Metaトグルを二重出力しないため）
-    skip_indices = set()
-
-    for i, block in enumerate(blocks):
-        #md = get_markdown_from_block(block)
-        #md_lines += md + "\n"
-        if i in skip_indices:
-                    continue
-        
-        b_type = block['type']
-        # --- 画像ブロックの特別処理 ---
-        if b_type == "image":
-            alt_text = ""
-            # 次のブロックが存在し、かつトグルであるか確認（先読み）
-            if i + 1 < len(blocks) and blocks[i+1]["type"] == "toggle":
-                # トグルの「中身」を別関数で取得
-                alt_text = get_toggle_content(blocks[i+1]["id"])
-                # トグルは画像の一部として処理したので、次のループではスキップ
-                skip_indices.add(i + 1)
-            
-            # 画像のMarkdown変換（引数にalt_textを渡せるように関数を調整）
-            md_lines += image_block_to_markdown(block, alt_text)
-                    
-        else:
-            # image以外のブロック処理
-            md_lines += block_to_markdown(block)
+    md = convert_blocks_to_markdown(blocks)
 
     #ファイルに保存
     os.makedirs(BASE_DOCS_DIR, exist_ok=True)
     save_path = os.path.join(BASE_DOCS_DIR, f"{output_filename}.md")
     with open(save_path, 'w', encoding='utf-8') as f:
-        f.write(md_lines)
+        f.write(md)
 
     print(f"🎉 Success! Generated: {save_path}")
     return
