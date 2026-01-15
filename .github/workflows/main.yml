@@ -1,0 +1,29 @@
+name: publish site
+on:
+  push:
+    branches:
+      - main  # mainブランチにpushされたら実行（masterの場合は書き換えてください）
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material  # 使いたいテーマやプラグインをここに並べる
+          # pip install -r requirements.txt # ファイルがあればこちらでもOK
+
+      - name: Deploy MkDocs
+        run: mkdocs gh-deploy --force
