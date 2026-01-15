@@ -1,5 +1,7 @@
-site_name: Notion Manual      # サイトのタイトル
-site_url: https://your-username.github.io/your-repo-name/ # あなたのURLに変更
+docs_dir: docs
+
+site_name: POPstation userguide      # サイトのタイトル
+site_url: https://hachico.github.io/popstation-userguide-docs/
 
 theme:
   name: material              # 非常に綺麗なテーマです
