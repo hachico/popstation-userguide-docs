@@ -1,0 +1,507 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://hachico.github.io/popstation-userguide-docs/%E3%83%81%E3%83%A3%E3%83%83%E3%83%88%E6%A9%9F%E8%83%BD/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>チャット機能 - POPstation userguide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="POPstation userguide" class="md-header__button md-logo" aria-label="POPstation userguide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            POPstation userguide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              チャット機能
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="POPstation userguide" class="md-nav__button md-logo" aria-label="POPstation userguide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    POPstation userguide
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">チャット機能</h1>
+<pre><code>            &gt; 💡 ✅POPstationでは、AIとのインタラクティブなチャットを通じて、様々なタスクを支援します。チャットに関する機能をご紹介します。
+            &gt; 💡 目次
+
+
+
+    ### チャット送信
+
+            ---
+
+            1. メッセージ入力: 画面下部のメッセージ欄に、AIに尋ねたいことや、依頼したいタスクの内容を入力します。
+    ![ POPstationのメイン画面中央下部。プロンプトの入力用メッセージボックスが強調されています](True)
+            1. 送信: 入力した内容を送信するには、Ctrl + Enterキーを押すか、メッセージ欄右側の送信ボタンをクリックします。
+    ![ プロンプトの入力用メッセージボックスの右横にある、プロンプト送信用の紙飛行機アイコンが強調されいます](True)
+            1. AIからの応答: メッセージ送信後、POPstationがリクエストを処理し、最適な回答を生成します。回答はメッセージ欄の上に表示され、チャット形式でやり取りが続きます。
+    ![](True)
+
+
+
+    ### ファイル入力機能（マルチモーダル機能）
+
+            ---
+
+            マルチモーダルとは、異なる種類のデータ（テキスト、画像、音声など）を同時に扱うAI技術です。
+
+            マルチモーダルに対応しているAIモデル*では、画像・PDF・動画・音声データ・テキストファイルの入力**ができます。
+
+            アップロード可能なファイル数は1つのチャットで最大10個までです。
+
+            * 現在、Geminiシリーズ のみ対応
+
+            **対応しているファイル形式（拡張子）は下記の通り
+
+
+
+![](True)
+            1. メッセージ欄のクリップアイコンをクリックし、利用したいファイルを選択します。
+            1. メッセージ欄にファイルがアップロードされます。
+
+
+
+    #### クリップボードからの画像入力
+
+            クリップボードから画像を入力することも可能です。
+
+![](True)
+            1. スクリーンショット機能などを使い、貼り付けたい画像をクリップボードに保存します。
+            1. 貼り付け機能を使い、メッセージ欄に貼り付けます。（Windowsであれば、Ctrl + V、右クリック → 貼り付け など）
+            1. メッセージ欄に画像ファイルがアップロードされます。
+
+
+
+    ### 追加質問テンプレート機能
+
+            ---
+
+            単なる一問一答だけでなく、対話を通してより深く掘り下げた情報提供を可能にする「追加質問テンプレート機能」を提供します。
+
+
+
+            1. 追加質問入力の起動: チャット画面左下のボタンをクリックするか、「Ctrl + /」キーを押すと、追加質問入力モードに切り替わります。
+    ![](True)
+            1. プロンプトの選択: 表示された追加質問のリストから、AIに尋ねたい内容に最適なものを選択します。
+    ![](True)
+            1. 送信と回答: 選択した追加質問は自動的にメッセージ欄に入力されます。送信ボタンをクリックすると、AIが質問に対する回答を生成します。
+    ![](True)
+
+
+            活用例:
+
+            * AIの回答が抽象的だと感じた場合、「具体的な問いへの詳細な回答」を選択して、より具体的な説明を求める。
+            * 異なる視点からの意見を知りたい場合、「異なる視点からの解答生成」を選択して、多角的な分析を依頼する。
+
+
+
+    ### チャット中断機能
+
+            ---
+
+            AIの回答を待っている間に、内容を変更したくなったり、別のタスクに取り掛かりたくなる場合があります。
+
+            POPstationでは、そのような場合でも柔軟に対応できるよう「チャット中断」機能を提供しています。
+
+            1. 中断ボタンの表示: POPstationが回答を生成している間は、メッセージ入力欄に「中断」ボタンが表示されます。
+    ![](True)
+            1. 中断の実行: 「中断」ボタンをクリックすると、AIの回答生成処理が中断されます。
+    ![](True)
+                    * 中断された時点までの回答内容は、チャット履歴に保持されます。
+                    * 注意点: 回答生成を中断しても、すべて回答を生成した場合と利用料金は変わりませんので、ご注意ください。
+
+
+
+
+
+    ### 会話の仕組み
+
+            ---
+
+            以下のような仕組みで、AIと会話をしています。
+
+
+
+            ⚠️ご注意
+
+            同一モード内のチャット履歴を含めて会話をしますので、連続してチャットする際は文字数の超過にご注意ください。
+
+
+
+![](True)
+
+
+
+
+            &gt; 💡
+
+        #### AIモデルの特徴
+
+            POPstationでは、複数のAIモデルを提供しており、それぞれ特徴がございます。また、処理できるテキストの文字数については上限が設定されています。ご利用目的に合わせて選定ください。
+
+
+
+            ⚠️ご注意
+
+            *  入力したテキストが上限文字数を超えた場合、超過した部分は自動的に切り捨てられます。
+            * 「ナレッジカットオフ（Knowledge Cutoff）」とは、AIモデルが学習・訓練に使った情報の最終時点を示します。
+| 開発元 | モデル名 | 精度 | 速度 | 推論 | ファイル入力対応 | 上限文字数（日本語） | ナレッジカットオフ | 国内リージョン |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Google | Gemini-2.5-flash | ○ | ◎ | × | ○ | 80万 | 2025年1月 | × |
+| Google | Gemini-2.5-flash-thinking | ◎ | ○ | ○ | ○ | 80万 | 2025年1月 | × |
+| Google | Gemini-2.5-pro | ◎ | △ | ○ | ○ | 80万 | 2025年1月 | × |
+| Google | Gemini 3 Pro Preview | ◎ | △ | ○ | ○ | 80万 | 2025年1月 | × |
+| OpenAI | o3 | ◎ | △ | ○ | × | 15万 | 2024年6月 | ○ |
+| OpenAI | o1 | ◎ | △ | ○ | × | 15万 | 2023年10月 | × |
+| OpenAI | GPT-4o | ○ | ○ | × | × | 15万 | 2024年5月 | ○ |
+| OpenAI | GPT-5 | ○ | ○ | ○ | × | 20万 | 2024年6月 | × |
+| OpenAI | GPT-5.1 | ◎ | ○ | ○ | × | 20万 | 2024年9月 | × |
+| Anthropic | Claude-opus-4 | ◎ | ○ | ○ | × | 10万 | 2025年3月 | × |
+| Anthropic | Claude-sonnet-4 | ◎ | ◎ | ○ | × | 10万 | 2025年3月 | × |
+| Anthropic | Claude Opus 4.5 | ◎ | ○ | ○ | × | 20万 | 2025年5月 | × |
+| Anthropic | Claude Sonnet 4.5 | ◎ | ◎ | ○ | × | 20万 | 2025年7月 | × |
+
+            ＜最新モデルの特徴＞
+
+            Gemini 3 Pro Preview:
+
+            Googleの最新フラッグシップモデル。
+
+            優れた推論能力を持ち、企画書の作成や複雑なデータ分析など、
+
+            高度な思考力を要する業務を強力にサポートします。
+
+
+
+            Gemini 3 Pro Image Preview:
+
+            高品質な画像生成モデル。プレゼン資料の挿絵作成や、
+
+            イメージ画像の生成など、視覚的な資料作成を効率化します。
+
+            画像内の文字も正確に描写可能です。
+
+
+
+            GPT-5.1:
+
+            人間らしい自然な対話が可能なモデル。
+
+            メールの代筆や壁打ち相手など、
+
+            幅広い業務シーンで活用いただけます。
+
+
+
+            Claude Opus 4.5:
+
+            非常に高い知能を持つ最高峰モデル。
+
+            曖昧な指示からでも意図を汲み取り、質の高い報告書作成や、
+
+            プログラミングなどの複雑なタスクの遂行を強力にサポートします。
+
+
+
+            Claude Sonnet 4.5:
+
+            長文の読解や文章作成、プログラミング支援に優れたモデル。
+
+            議事録の要約やコード作成など、
+
+            実務的な作業で高いパフォーマンスを発揮します。
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.top", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
